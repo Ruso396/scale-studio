@@ -1,4 +1,5 @@
 import { SERVICES, SERVICE_IMAGES } from "@/constants";
+import ServiceCardImage from "@/components/home/ServiceCardImage";
 
 export default function Services() {
   return (
@@ -20,8 +21,8 @@ export default function Services() {
               className="card-hover group overflow-hidden rounded-2xl border border-border bg-card"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
-                  src={SERVICE_IMAGES[service]}
+                <ServiceCardImage
+                  src={SERVICE_IMAGES[service] ?? SERVICE_IMAGES["Full Home"]}
                   alt={service}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

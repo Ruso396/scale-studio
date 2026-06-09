@@ -42,7 +42,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   Wardrobe:
     "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=520&fit=crop&q=80",
   Bedroom:
-    "https://images.unsplash.com/photo-1616594039964-40891a91a001?w=800&h=520&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=520&fit=crop&q=80",
   Ceiling:
     "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&h=520&fit=crop&q=80",
   Bathroom:
