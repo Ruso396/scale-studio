@@ -51,65 +51,85 @@ export default function DesignerFormModal({
     }
   };
 
+  const formId = "designer-form-modal";
+
   return (
     <Modal
       open={open}
       onClose={handleClose}
-      title="Add New Designer"
-      className="max-w-lg"
+      size="sm"
+      title="Add Designer"
+      description={`New designers receive ${SIGNUP_CREDITS} free credits and can log in immediately.`}
+      footer={
+        <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={handleClose}
+            disabled={isSubmitting}
+            className="w-full sm:w-auto"
+          >
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            form={formId}
+            variant="premium"
+            loading={isSubmitting}
+            className="w-full sm:w-auto"
+          >
+            Add Designer
+          </Button>
+        </div>
+      }
     >
-      <p className="mb-5 text-sm text-muted">
-        Create a designer account. They will receive {SIGNUP_CREDITS} credits and can
-        log in with the email and password you set.
-      </p>
-
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <Input
-          label="Full Name"
-          {...register("name")}
-          error={errors.name?.message}
-          placeholder="Designer name"
-        />
-
-        <div className="grid gap-4 sm:grid-cols-2">
+      <form
+        id={formId}
+        onSubmit={handleSubmit(onSubmit)}
+        className="grid grid-cols-1 gap-3.5 md:grid-cols-2"
+      >
+        <div className="md:col-span-2">
           <Input
-            label="Email"
-            type="email"
-            {...register("email")}
-            error={errors.email?.message}
-            placeholder="email@example.com"
-          />
-          <Input
-            label="Phone"
-            {...register("phone")}
-            error={errors.phone?.message}
-            placeholder="10-digit mobile"
+            label="Full Name"
+            {...register("name")}
+            error={errors.name?.message}
+            placeholder="Designer name"
           />
         </div>
 
-        <Select
-          label="City"
-          options={CITIES}
-          placeholder="Select city"
-          {...register("city")}
-          error={errors.city?.message}
+        <Input
+          label="Email"
+          type="email"
+          {...register("email")}
+          error={errors.email?.message}
+          placeholder="email@example.com"
         />
 
         <Input
-          label="Password"
-          type="password"
-          {...register("password")}
-          error={errors.password?.message}
-          placeholder="Min 6 characters"
+          label="Phone"
+          {...register("phone")}
+          error={errors.phone?.message}
+          placeholder="10-digit mobile"
         />
 
-        <div className="flex justify-end gap-3 pt-4">
-          <Button type="button" variant="ghost" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button type="submit" variant="premium" loading={isSubmitting}>
-            Add Designer
-          </Button>
+        <div className="md:col-span-2">
+          <Select
+            label="City"
+            options={CITIES}
+            placeholder="Select city"
+            {...register("city")}
+            error={errors.city?.message}
+          />
+        </div>
+
+        <div className="md:col-span-2">
+          <Input
+            label="Password"
+            type="password"
+            {...register("password")}
+            error={errors.password?.message}
+            placeholder="Min 6 characters"
+          />
         </div>
       </form>
     </Modal>
