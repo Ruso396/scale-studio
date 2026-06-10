@@ -1848,6 +1848,38 @@ body {
   padding-right: 3rem;
 }
 
+.login-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.login-select option {
+  background: #0b1630;
+  color: #ffffff;
+}
+
+.login-panel-right--scroll {
+  align-items: flex-start;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 1024px) {
+  .login-panel-right--scroll {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .login-panel-right--scroll .login-form-wrap {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
 .login-input::placeholder {
   color: rgba(183, 190, 201, 0.45);
 }
