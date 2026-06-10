@@ -1,118 +1,77 @@
+import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import {
-  ArrowRight,
-  Sparkles,
-  MapPin,
-  IndianRupee,
-  Home,
-  Lock,
-  UserCheck,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 const STATS = [
   { value: "500+", label: "Verified Leads" },
-  { value: "200+", label: "Designers" },
-  { value: "5 Cities", label: "Coverage" },
+  { value: "200+", label: "Interior Designers" },
+  { value: "5+", label: "Major Cities" },
 ];
 
-const FLOATING_LEADS = [
-  {
-    city: "Mumbai",
-    service: "Full Home Design",
-    budget: "₹8–12L",
-    bhk: "3 BHK",
-    tag: "Verified",
-    offset: "top-8 left-4",
-    delay: "hero-float-1",
-  },
-  {
-    city: "Bangalore",
-    service: "Modular Kitchen",
-    budget: "₹3–5L",
-    bhk: "2 BHK",
-    tag: "New",
-    offset: "top-44 right-0",
-    delay: "hero-float-2",
-  },
-  {
-    city: "Pune",
-    service: "Living Room Makeover",
-    budget: "₹2–4L",
-    bhk: "2 BHK",
-    tag: "Hot",
-    offset: "bottom-28 left-12",
-    delay: "hero-float-3",
-  },
+const TRUST_ITEMS = [
+  "Verified Clients",
+  "Premium Projects",
+  "High Budget Leads",
+  "Secure Platform",
 ];
 
-const ACTIVITY_ITEMS = [
-  {
-    name: "Priya S.",
-    action: "unlocked a premium lead",
-    city: "Mumbai",
-    time: "2m ago",
-    offset: "top-24 right-8",
-    delay: "hero-float-2",
-  },
-  {
-    name: "Arjun M.",
-    action: "joined Scale Studio",
-    city: "Hyderabad",
-    time: "Just now",
-    offset: "bottom-16 right-16",
-    delay: "hero-float-1",
-  },
-];
+const SHOWCASE_IMAGE =
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=1120&fit=crop&q=85";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="hero-section relative min-h-screen overflow-hidden pt-20"
+      className="hero-section relative flex min-h-screen items-center overflow-hidden pt-20"
     >
-      <div className="hero-bg-image absolute inset-0" />
-      <div className="hero-overlay absolute inset-0" />
-      <div className="hero-vignette absolute inset-0" />
-      <div className="hero-ambient-glow pointer-events-none absolute -right-32 top-1/4 h-[500px] w-[500px] rounded-full" />
-      <div className="hero-ambient-glow pointer-events-none absolute -left-24 bottom-1/4 h-[400px] w-[400px] rounded-full opacity-60" />
+      <div className="hero-bg-image absolute inset-0" aria-hidden />
+      <div className="hero-overlay absolute inset-0" aria-hidden />
+      <div className="hero-vignette absolute inset-0" aria-hidden />
+      <div
+        className="hero-light-glow pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 lg:left-auto lg:right-0 lg:translate-x-1/4"
+        aria-hidden
+      />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid min-h-[calc(100vh-5rem)] items-center gap-14 py-16 lg:grid-cols-2 lg:gap-20 lg:py-24">
-          {/* Left — copy & CTAs */}
-          <div className="hero-content-left max-w-xl lg:max-w-none">
-            <div className="hero-badge mb-8 inline-flex items-center gap-2.5">
-              <Sparkles className="h-3.5 w-3.5 text-accent" />
-              <span className="h-1.5 w-1.5 rounded-full bg-accent pulse-glow" />
-              <span>India&apos;s Premium Lead Platform</span>
-            </div>
-
-            <h1 className="font-display text-[2.75rem] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.5rem] xl:text-6xl">
-              Get Verified
-              <br />
-              <span className="hero-headline-accent">Interior Design</span>
-              <br />
-              Leads
+          {/* Left — content unchanged */}
+          <div className="hero-left text-center lg:text-left">
+            <h1 className="hero-fade-in hero-title font-display text-[2rem] font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem]">
+              Verified Interior Design Leads That{" "}
+              <span className="hero-headline-accent">Grow Your Business</span>
             </h1>
 
-            <p className="hero-subheadline mt-6 max-w-lg text-lg leading-relaxed text-white/75 sm:text-xl">
-              Grow Your Studio With Premium Homeowners.
-              <span className="mt-2 block text-base text-muted sm:text-lg">
-                Unlock high-intent, verified clients across India&apos;s top
-                cities — built exclusively for interior designers.
-              </span>
+            <p className="hero-fade-in hero-fade-delay-1 mx-auto mt-7 max-w-xl text-base leading-relaxed text-white/70 sm:mt-8 sm:text-lg sm:leading-relaxed lg:mx-0">
+              Connect with genuine homeowners and access premium interior
+              projects across India&apos;s top cities.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="hero-fade-in hero-fade-delay-2 hero-stats mx-auto mt-12 flex max-w-lg flex-col items-stretch justify-center gap-8 sm:mt-14 sm:flex-row sm:items-center sm:gap-0 lg:mx-0 lg:max-w-none">
+              {STATS.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="hero-stat-item flex flex-1 flex-col items-center px-4 lg:items-start lg:px-5"
+                >
+                  <p className="font-display text-3xl font-bold text-accent sm:text-4xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-muted">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="hero-fade-in hero-fade-delay-3 mt-12 flex flex-col items-center justify-center gap-4 sm:mt-14 sm:flex-row lg:justify-start">
               <Link href="/register" className="w-full sm:w-auto">
                 <Button
                   variant="premium"
                   size="lg"
                   className="hero-cta-primary group w-full sm:w-auto"
                 >
-                  Join Free
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Start Getting Leads
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/login" className="w-full sm:w-auto">
@@ -121,107 +80,45 @@ export default function Hero() {
                   size="lg"
                   className="hero-cta-secondary w-full sm:w-auto"
                 >
-                  Browse Leads
+                  Explore Leads
                 </Button>
               </Link>
             </div>
 
-            <div className="mt-14 grid grid-cols-3 gap-3 sm:gap-4">
-              {STATS.map((stat) => (
-                <div key={stat.label} className="hero-stat-glass">
-                  <p className="font-display text-xl font-bold text-accent sm:text-2xl lg:text-3xl">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-[10px] font-medium uppercase tracking-wider text-muted sm:text-xs">
-                    {stat.label}
-                  </p>
-                </div>
+            <div className="hero-fade-in hero-fade-delay-4 hero-trust mx-auto mt-12 flex max-w-xl flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:mt-14 lg:mx-0 lg:justify-start">
+              {TRUST_ITEMS.map((item) => (
+                <span
+                  key={item}
+                  className="hero-trust-item inline-flex items-center gap-2"
+                >
+                  <Check
+                    className="h-3.5 w-3.5 shrink-0 text-accent"
+                    strokeWidth={2.5}
+                  />
+                  <span className="text-sm text-white/65">{item}</span>
+                </span>
               ))}
             </div>
           </div>
 
-          {/* Right — floating visual composition */}
-          <div className="relative mx-auto hidden w-full max-w-lg lg:block lg:max-w-none lg:min-h-[620px]">
-            <div className="hero-visual-ring pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full" />
-
-            {FLOATING_LEADS.map((lead) => (
-              <div
-                key={`${lead.city}-${lead.service}`}
-                className={`hero-float-card absolute w-[260px] ${lead.offset} ${lead.delay}`}
-              >
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="hero-lead-tag">{lead.tag}</span>
-                  <span className="flex items-center gap-1 text-[10px] text-muted">
-                    <Lock className="h-3 w-3" />
-                    Locked
-                  </span>
-                </div>
-                <p className="font-display text-base font-semibold leading-snug">
-                  {lead.service}
-                </p>
-                <div className="mt-3 space-y-1.5 text-xs text-muted">
-                  <p className="flex items-center gap-1.5">
-                    <MapPin className="h-3 w-3 shrink-0 text-accent/80" />
-                    {lead.city}
-                  </p>
-                  <p className="flex items-center gap-1.5">
-                    <IndianRupee className="h-3 w-3 shrink-0 text-accent/80" />
-                    {lead.budget}
-                  </p>
-                  <p className="flex items-center gap-1.5">
-                    <Home className="h-3 w-3 shrink-0 text-accent/80" />
-                    {lead.bhk}
-                  </p>
-                </div>
+          {/* Right — premium showcase image */}
+          <div className="hero-showcase-col hidden lg:flex lg:items-center lg:justify-end">
+            <div className="hero-fade-in hero-fade-delay-5 hero-showcase">
+              <div className="hero-showcase-glow" aria-hidden />
+              <div className="hero-showcase-accent" aria-hidden />
+              <div className="hero-showcase-frame group">
+                <Image
+                  src={SHOWCASE_IMAGE}
+                  alt="Luxury modern interior design"
+                  width={900}
+                  height={1120}
+                  priority
+                  className="hero-showcase-img"
+                />
+                <div className="hero-showcase-overlay" aria-hidden />
+                <div className="hero-showcase-inner-frame" aria-hidden />
               </div>
-            ))}
-
-            {ACTIVITY_ITEMS.map((item) => (
-              <div
-                key={item.name}
-                className={`hero-activity-card absolute w-[240px] ${item.offset} ${item.delay}`}
-              >
-                <div className="flex items-start gap-3">
-                  <div className="hero-activity-avatar flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
-                    <UserCheck className="h-4 w-4 text-accent" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold leading-snug">
-                      {item.name}
-                    </p>
-                    <p className="mt-0.5 text-xs text-muted">{item.action}</p>
-                    <p className="mt-1 flex items-center gap-1 text-[10px] text-accent/80">
-                      <TrendingUp className="h-3 w-3" />
-                      {item.city} · {item.time}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            <div className="hero-live-pill absolute bottom-6 left-1/2 -translate-x-1/2">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              12 leads added today
             </div>
-          </div>
-
-          {/* Mobile visual preview */}
-          <div className="grid gap-4 sm:grid-cols-2 lg:hidden">
-            {FLOATING_LEADS.slice(0, 2).map((lead) => (
-              <div key={`mobile-${lead.city}`} className="hero-float-card">
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="hero-lead-tag">{lead.tag}</span>
-                  <Lock className="h-3 w-3 text-muted" />
-                </div>
-                <p className="font-display text-sm font-semibold">
-                  {lead.service}
-                </p>
-                <p className="mt-2 flex items-center gap-1 text-xs text-muted">
-                  <MapPin className="h-3 w-3 text-accent/80" />
-                  {lead.city} · {lead.budget}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
