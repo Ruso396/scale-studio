@@ -46,8 +46,72 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.4); border-radius: 4px; }
 
+/* ── Dashboard shell layout ── */
+.dashboard-shell {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.dashboard-sidebar-spacer {
+  display: none;
+  flex-shrink: 0;
+  width: 280px;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-sidebar-spacer {
+    display: block;
+  }
+}
+
+.dashboard-main {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0%;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.dashboard-content {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  padding: 1.25rem 1rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .dashboard-content {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-content {
+    padding: 2rem 2rem 2.5rem;
+  }
+}
+
+.dashboard-content > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 /* ── Dashboard shell background ── */
 .dashboard-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
   background:
     radial-gradient(ellipse 90% 60% at 70% -10%, rgba(201, 168, 76, 0.07), transparent 55%),
     radial-gradient(ellipse 50% 40% at 0% 50%, rgba(27, 38, 59, 0.8), transparent),
@@ -578,6 +642,8 @@ body {
 .page-header-bg {
   position: relative;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
   border-radius: 20px;
   background: linear-gradient(135deg, rgba(30, 45, 66, 0.4) 0%, rgba(13, 27, 42, 0.6) 100%);
   border: 1px solid rgba(42, 58, 82, 0.5);
@@ -657,6 +723,13 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.data-table-shell .overflow-x-auto {
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table-search {

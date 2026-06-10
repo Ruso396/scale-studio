@@ -10,7 +10,7 @@ export function Table({
   ...props
 }: React.HTMLAttributes<HTMLTableElement>) {
   return (
-    <div className="overflow-x-auto">
+    <div className="min-w-0 max-w-full overflow-x-auto">
       <table className={cn("w-full text-sm", className)} {...props}>
         {children}
       </table>
