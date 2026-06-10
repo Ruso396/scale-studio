@@ -43,6 +43,9 @@ MONGODB_URI=
 JWT_SECRET=
 ADMIN_EMAIL=
 ADMIN_PASSWORD=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
 ```
 
 Optional:
@@ -58,6 +61,9 @@ SEED_DESIGNER_PASSWORD=
 | `JWT_SECRET` | Secret key for signing JWT tokens |
 | `ADMIN_EMAIL` | Admin login email |
 | `ADMIN_PASSWORD` | Admin login password |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name for lead image storage |
+| `CLOUDINARY_API_KEY` | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
 | `NEXT_PUBLIC_LOGO_VERSION` | Cache-bust version for the logo asset |
 | `SEED_DESIGNER_PASSWORD` | Password for sample designers when running `npm run seed` |
 
@@ -92,11 +98,15 @@ Admin login is available at `/admin/login` using the credentials configured in `
 
 Designers can register at `/register` and sign in at `/login`.
 
+## Deployment (Vercel)
+
+Lead images are uploaded to **Cloudinary** (not the local filesystem). Add all environment variables from `.env.example` in the Vercel project settings, including the three `CLOUDINARY_*` values from your [Cloudinary dashboard](https://cloudinary.com/console).
+
 ## Security Notes
 
 - Never commit `.env.local` or real credentials.
 - Use strong values for `JWT_SECRET` and `ADMIN_PASSWORD` in production.
-- Uploaded lead images are stored in `public/uploads/leads/` locally.
+- Lead images are stored on Cloudinary; only secure URLs are saved in MongoDB.
 
 ## License
 

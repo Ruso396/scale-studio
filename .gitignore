@@ -41,7 +41,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# uploaded lead images (keep folder)
-/public/uploads/leads/*
-!/public/uploads/leads/.gitkeep
